@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotels - Vitsatrail</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="logo">Vitsatrail</span>
+        <span class="tagline">Explore Kenya Differently</span>
+      </a>
+      <nav class="main-nav" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="hotels.html" class="active">Hotels</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn">Partner Login</a>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero small-hero" style="background-image:url('images/hotels-hero.jpg');">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Our Partner Hotels</h1>
+      <p>Enjoy your stay in Kenya’s finest hotels — comfort, class, and hospitality that perfectly complement your adventure.</p>
+    </div>
+  </section>
+
+  <!-- Hotels List -->
+  <section class="hotels container">
+    <div class="intro">
+      <h2>Stay with the Best</h2>
+      <p>We’ve handpicked luxurious and comfortable hotels near each of our key destinations to ensure you have a perfect rest after a day of exploration.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Sarova Imperial Hotel -->
+      <div class="card">
+        <img src="images/sarova-imperial.jpg" alt="Sarova Imperial Hotel Kisumu">
+        <div class="card-body">
+          <h3>Sarova Imperial Hotel — Kisumu</h3>
+          <p>Located in the heart of Kisumu city, Sarova Imperial offers elegant rooms, rooftop dining, and views of Lake Victoria — ideal for visitors to Impala Park and the lakeside tours.</p>
+          <p><strong>Rate:</strong> From <strong>$120</strong> per night (Bed & Breakfast)</p>
+          <div class="card-actions">
+            <button class="btn hotel-btn" data-hotel="Sarova Imperial Hotel" data-price="120">Book Stay</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eka Hotel -->
+      <div class="card">
+        <img src="images/eka-hotel.jpg" alt="Eka Hotel Eldoret">
+        <div class="card-body">
+          <h3>Eka Hotel — Eldoret</h3>
+          <p>A modern and classy establishment offering spacious rooms, fine dining, and proximity to Iten — the home of world athletic champions.</p>
+          <p><strong>Rate:</strong> From <strong>$95</strong> per night (Half Board)</p>
+          <div class="card-actions">
+            <button class="btn hotel-btn" data-hotel="Eka Hotel" data-price="95">Book Stay</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lake Nakuru Lodge -->
+      <div class="card">
+        <img src="images/lake-nakuru-lodge.jpg" alt="Lake Nakuru Lodge">
+        <div class="card-body">
+          <h3>Lake Nakuru Lodge — Nakuru</h3>
+          <p>Nestled within Lake Nakuru National Park, this lodge gives you a front-row seat to Kenya’s wildlife and flamingos — an authentic safari experience.</p>
+          <p><strong>Rate:</strong> From <strong>$110</strong> per night (Full Board)</p>
+          <div class="card-actions">
+            <button class="btn hotel-btn" data-hotel="Lake Nakuru Lodge" data-price="110">Book Stay</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thompson Falls Lodge -->
+      <div class="card">
+        <img src="images/thompson-falls-lodge.jpg" alt="Thompson Falls Lodge">
+        <div class="card-body">
+          <h3>Thompson Falls Lodge — Nyahururu</h3>
+          <p>Enjoy a calm stay next to the scenic waterfall, with cozy cottages, fresh air, and local cuisine. Perfect for photographers and couples.</p>
+          <p><strong>Rate:</strong> From <strong>$80</strong> per night (Bed & Breakfast)</p>
+          <div class="card-actions">
+            <button class="btn hotel-btn" data-hotel="Thompson Falls Lodge" data-price="80">Book Stay</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tea Plantation Resort -->
+      <div class="card">
+        <img src="images/tigoni-resort.jpg" alt="Tea Plantation Resort Tigoni">
+        <div class="card-body">
+          <h3>Tea Plantation Resort — Tigoni</h3>
+          <p>Relax in the lush tea fields of Tigoni, just outside Nairobi. A serene countryside escape with modern facilities and garden views.</p>
+          <p><strong>Rate:</strong> From <strong>$70</strong> per night (Bed & Breakfast)</p>
+          <div class="card-actions">
+            <button class="btn hotel-btn" data-hotel="Tea Plantation Resort" data-price="70">Book Stay</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <h4>Vitsatrail</h4>
+        <p>Phone: +254 735 354 535</p>
+        <p>Email: info@vitsatrail.com</p>
+      </div>
+      <div class="footer-right">
+        <p>Follow us on:</p>
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+    <p class="copyright">&copy; <span id="year"></span> Vitsatrail. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      hamburger.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Auto year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Book Stay buttons
+    document.querySelectorAll('.hotel-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const hotel = btn.dataset.hotel;
+        const price = btn.dataset.price;
+        localStorage.setItem('selectedHotel', hotel);
+        localStorage.setItem('selectedHotelPrice', price);
+        window.location.href = 'book.html';
+      });
+    });
+  </script>
+</body>
+</html>

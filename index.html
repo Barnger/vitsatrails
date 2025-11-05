@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitsatrail — Explore Kenya Differently</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Vitsatrail — Experience Kenya’s most scenic destinations through guided safaris, lake tours, and cultural adventures." />
+  <style>
+   /* ===== HERO STYLES ===== */
+.hero {
+  position: relative;
+  min-height: 80vh; /* increase height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+
+  /* Full hero background */
+  background-image: url('images/hero-kenya.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* darker overlay for readability */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons .btn {
+  margin: 0 0.5rem;
+}
+
+/* Optional split layout image (desktop) */
+.hero-image {
+  display: none; /* hide by default */
+}
+
+@media (min-width: 992px) {
+  .hero {
+    justify-content: flex-start;
+    padding-left: 5%;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .hero-image {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 20px;
+    min-height: 60vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="logo">Vitsatrail</span>
+        <span class="tagline">Explore Kenya Differently</span>
+      </a>
+      <nav class="main-nav" id="navMenu">
+        <a href="index.html" class="active">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="hotels.html">Hotels</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn small">Login</a>
+        <a href="register.html" class="btn small outline">Partner</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="overlay"></div>
+    <div class="container hero-content" id="hero-content">
+      <!-- Content will be loaded dynamically -->
+    </div>
+    <div class="hero-image" id="hero-image">
+      <!-- Hero image will be loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- Featured Destinations -->
+  <section class="featured container">
+    <h2>Featured Destinations</h2>
+    <p class="section-sub">Our top picks for unforgettable experiences across Kenya.</p>
+    <div class="cards-grid" id="destinations-grid"></div>
+  </section>
+
+  <!-- Suggested Hotels -->
+  <section class="hotels container">
+    <h2>Top Hotel Recommendations</h2>
+    <p class="section-sub">Stay in comfort near our most popular destinations.</p>
+    <div class="hotel-list" id="hotels-list"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <h4>Vitsatrail</h4>
+        <p>Authentic Kenyan tours — travel, explore, and connect with culture.</p>
+        <p>Phone / WhatsApp: <a href="https://wa.me/254735354535">+254 735 354 535</a></p>
+      </div>
+      <div class="footer-right">
+        <p>Follow us on:</p>
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+    <p class="copyright">© <span id="year"></span> Vitsatrail. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // ===== MOBILE NAV =====
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      hamburger.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // ===== AUTO YEAR =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== DYNAMIC HERO =====
+    const heroData = {
+      title: "Discover the Beauty of <span class='accent'>Kenya</span>",
+      description: "Tailor-made safaris, lakeside retreats, and cultural expeditions crafted for every traveler.",
+      buttons: [
+        { text: "Explore Tours", link: "destinations.html", outline: false },
+        { text: "Get in Touch", link: "contact.html", outline: true }
+      ],
+      img: "images/hero-kenya.jpg"
+    };
+
+    const heroContent = document.getElementById('hero-content');
+    const heroImage = document.getElementById('hero-image');
+
+    // Set text content
+    heroContent.innerHTML = `
+      <h1>${heroData.title}</h1>
+      <p>${heroData.description}</p>
+      <div class="hero-buttons">
+        ${heroData.buttons.map(btn => `<a href="${btn.link}" class="btn ${btn.outline ? 'outline' : ''}">${btn.text}</a>`).join('')}
+      </div>
+      <p class="hero-contact">Call / WhatsApp: <a href="https://wa.me/254735354535" target="_blank">+254 735 354 535</a></p>
+    `;
+
+    // Set hero image
+    heroImage.innerHTML = `<img src="${heroData.img}" alt="Kenya landscape">`;
+
+    // ===== DYNAMIC DESTINATIONS =====
+    const destinations = [
+      { title: "Lake Nakuru", description: "Flamingos, rhinos, and breathtaking Rift Valley views.", img: "images/lake-nakurus.jpg", link: "destinations.html#nakuru" },
+      { title: "Lake Victoria", description: "Boat rides, fishing adventures, and vibrant local culture.", img: "images/lake-victorias.jpg", link: "destinations.html#victoria" },
+      { title: "Iten Highlands", description: "Scenic hikes and serene views of Kerio Valley.", img: "images/iten-highlands.jpg", link: "destinations.html#iten" }
+    ];
+    const destinationsGrid = document.getElementById('destinations-grid');
+    destinations.forEach(dest => {
+      const card = document.createElement('article');
+      card.classList.add('card');
+      card.innerHTML = `
+        <img src="${dest.img}" alt="${dest.title}">
+        <div class="card-body">
+          <h3>${dest.title}</h3>
+          <p>${dest.description}</p>
+          <div class="card-actions">
+            <a href="${dest.link}" class="btn small">View Trip</a>
+          </div>
+        </div>
+      `;
+      destinationsGrid.appendChild(card);
+    });
+
+    // ===== DYNAMIC HOTELS =====
+    const hotels = [
+      { name: "Sarova Imperial — Kisumu", description: "Modern luxury overlooking Lake Victoria with world-class amenities." },
+      { name: "Eka Hotel — Eldoret", description: "Perfect base for exploring Iten and the Western Highlands." },
+      { name: "Sarova Woodlands — Nakuru", description: "Relax in style near Lake Nakuru National Park with fine dining and a spa." }
+    ];
+    const hotelsList = document.getElementById('hotels-list');
+    hotels.forEach(hotel => {
+      const div = document.createElement('div');
+      div.classList.add('hotel');
+      div.innerHTML = `<h4>${hotel.name}</h4><p>${hotel.description}</p>`;
+      hotelsList.appendChild(div);
+    });
+  </script>
+</body>
+</html>

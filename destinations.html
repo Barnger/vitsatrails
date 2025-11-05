@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations - Vitsatrail</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="logo">Vitsatrail</span>
+        <span class="tagline">Explore Kenya Differently</span>
+      </a>
+      <nav class="main-nav" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="destinations.html" class="active">Destinations</a>
+        <a href="hotels.html">Hotels</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn">Partner Login</a>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero small-hero" style="background-image:url('images/kenya-landscape.jpg');">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Our Top Destinations</h1>
+      <p>Discover breathtaking destinations — from the Great Rift Valley to Kenya’s hidden green gems.</p>
+    </div>
+  </section>
+
+  <!-- Destinations Grid -->
+  <section class="destinations container">
+    <div class="intro">
+      <h2>Explore Our Featured Tours</h2>
+      <p>Each Vitsatrail journey is designed to connect you with Kenya’s beauty and culture. Choose your dream destination and start your adventure today!</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Lake Nakuru -->
+      <div class="card">
+        <img src="images/lake-nakuru.jpg" alt="Lake Nakuru National Park">
+        <div class="card-body">
+          <h3>Lake Nakuru National Park</h3>
+          <p>Home to flamingos, rhinos and diverse wildlife — surrounded by acacia woodlands and scenic hills.</p>
+          <p><strong>Rate:</strong> From <strong>$55</strong> per person</p>
+          <div class="card-actions">
+            <button class="btn book-btn" data-destination="Lake Nakuru" data-price="55">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lake Victoria -->
+      <div class="card">
+        <img src="images/lake-victoria.jpg" alt="Lake Victoria">
+        <div class="card-body">
+          <h3>Lake Victoria</h3>
+          <p>Experience Africa’s largest lake through fishing, boat rides, and sunsets over Kisumu’s serene shores.</p>
+          <p><strong>Rate:</strong> From <strong>$68</strong> per person</p>
+          <div class="card-actions">
+            <button class="btn book-btn" data-destination="Lake Victoria" data-price="68">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lake Elementaita -->
+      <div class="card">
+        <img src="images/lake-elementaita.jpg" alt="Lake Elementaita">
+        <div class="card-body">
+          <h3>Lake Elementaita</h3>
+          <p>Famous for its pelicans, soda waters, and peaceful escapes — ideal for relaxation and birdwatching.</p>
+          <p><strong>Rate:</strong> From <strong>$50</strong> per person</p>
+          <div class="card-actions">
+            <button class="btn book-btn" data-destination="Lake Elementaita" data-price="50">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lake Bogoria -->
+      <div class="card">
+        <img src="images/lake-bogoria.jpg" alt="Lake Bogoria">
+        <div class="card-body">
+          <h3>Lake Bogoria</h3>
+          <p>Home to natural geysers, hot springs and flamingos — a rare geothermal wonder of the Rift Valley.</p>
+          <p><strong>Rate:</strong> From <strong>$63</strong> per person</p>
+          <div class="card-actions">
+            <button class="btn book-btn" data-destination="Lake Bogoria" data-price="63">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add the rest similarly... -->
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <h4>Vitsatrail</h4>
+        <p>Phone: +254 735 354 535</p>
+        <p>Email: info@vitsatrail.com</p>
+      </div>
+      <div class="footer-right">
+        <p>Follow us on:</p>
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+    <p class="copyright">&copy; <span id="year"></span> Vitsatrail. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      hamburger.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Auto year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Book Now buttons
+    document.querySelectorAll('.book-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const destination = btn.dataset.destination;
+        const price = btn.dataset.price;
+        localStorage.setItem('selectedDestination', destination);
+        localStorage.setItem('selectedPrice', price);
+        window.location.href = 'book.html';
+      });
+    });
+  </script>
+</body>
+</html>

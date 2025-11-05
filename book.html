@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitsatrail — Book Your Dream Adventure</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Book your guided safari, cultural tour, or lakeside retreat with Vitsatrail — secure your adventure in Kenya today." />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="logo">Vitsatrail</span>
+        <span class="tagline">Explore Kenya Differently</span>
+      </a>
+      <nav class="main-nav" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="hotels.html">Hotels</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn small">Login</a>
+        <a href="register.html" class="btn small outline">Partner</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" style="background-image: url('images/hotels-hero.jpg');">
+    <div class="overlay"></div>
+    <div class="container hero-content">
+      <h1>Book Your Dream Adventure</h1>
+      <p>Fill in your details below to secure your booking. Prices are calculated per person.</p>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section class="booking container">
+    <form id="bookingForm">
+      <label for="destination">Destination or Hotel</label>
+      <input type="text" id="destination" name="destination" placeholder="e.g. Maasai Mara, Serena Hotel" required readonly>
+
+      <label for="price">Price per Person (USD)</label>
+      <input type="text" id="price" name="price" readonly>
+
+      <label for="people">Number of People</label>
+      <input type="number" id="people" name="people" min="1" placeholder="Enter number of travelers" required>
+
+      <div class="price-display">Total Price: <span id="total-price">0</span> USD</div>
+
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" placeholder="Enter your full name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="+254 712 345 678" required>
+
+      <label for="nationality">Nationality</label>
+      <select id="nationality" required>
+        <option value="">-- Select Nationality --</option>
+        <option>Kenyan</option>
+        <option>Ugandan</option>
+        <option>Tanzanian</option>
+        <option>Rwandan</option>
+        <option>South African</option>
+        <option>Other</option>
+      </select>
+
+      <label for="date">Preferred Travel Date</label>
+      <input type="date" id="date" required>
+
+      <label for="payment-method">Payment Method</label>
+      <select id="payment-method" required>
+        <option value="">-- Select Payment Method --</option>
+        <option value="mpesa">M-Pesa</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="bank">Bank Transfer</option>
+      </select>
+
+      <div id="payment-info" class="hidden">
+        <p><strong>Payment Instructions:</strong></p>
+        <ul>
+          <li><b>M-Pesa:</b> Paybill 123456, Account: Vitsatrail</li>
+          <li><b>Card:</b> You’ll be redirected to our secure payment page.</li>
+          <li><b>PayPal:</b> Use info@vitsatrail.com for transfers.</li>
+        </ul>
+      </div>
+
+      <label for="message">Additional Message</label>
+      <textarea id="message" rows="4" placeholder="Any special requests or details..."></textarea>
+
+      <button type="submit" class="btn">Confirm & Pay</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <h4>Vitsatrail</h4>
+        <p>Authentic Kenyan tours — travel, explore, and connect with culture.</p>
+        <p>Phone / WhatsApp: <a href="https://wa.me/254735354535">+254 735 354 535</a></p>
+      </div>
+      <div class="footer-right">
+        <p>Follow us on:</p>
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+    <p class="copyright">© <span id="year"></span> Vitsatrail. All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
